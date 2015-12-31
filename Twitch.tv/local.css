@@ -1,0 +1,28 @@
+body {
+	font-family: monospace;
+	background-color: #39b1a4;
+}
+
+.target {
+	width: 40%;
+	margin-top: 1%;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+#logo {
+	margin-top: -7%;
+}
+
+.query {
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.panel-body {
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: none;
+}

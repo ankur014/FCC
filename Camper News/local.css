@@ -1,0 +1,88 @@
+@import url(https://fonts.googleapis.com/css?family=Bree+Serif);
+
+@media (max-width: 1024px) {
+	.dpAdjust {
+		display: none;
+	}
+
+	.toolbar {
+		width: 80%;
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+}
+
+@media (min-width: 1025px) {
+	.toolbar {
+		width: 40%;
+		margin-left: 30%;
+		margin-right: 30%;
+		margin-top: 2%;
+	}
+}
+
+body {
+	background-color: #457E86;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.ruler {
+	background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.75), transparent); 
+	height: 1px;
+}
+
+.panel {
+	font-family: monospace;
+	margin-top: 0px;
+}
+
+.panel-title {
+	font-weight: bold;
+	font-size: 1.6vmax;
+}
+
+.panel-body {
+	font-weight: bold;
+}
+
+.heading {
+	margin-left: 30%;
+	margin-right: 30%;
+	width: 40%;
+	margin-top: 2%;
+	font-family: 'Bree Serif', monospace;
+}
+
+.toolbar button {
+	color: #457E86;
+}
+
+.dropdown-menu li a {
+	color: #457E86;
+}
+
+.headingName {
+	font-size: 2.9vmax;
+	font-weight: bold;
+	color: #333;
+	margin-top: -1%;
+}
+
+.contentBox {
+	margin-top: 2%;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.logo {
+	width: 100%;
+	height: 50%;
+}
+
+.dpAdjust {
+	margin-top: 1%;
+}

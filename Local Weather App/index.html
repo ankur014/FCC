@@ -1,0 +1,209 @@
+<!--
+Background credit: www.pcwallart.com
+API: openweathermap.org
+-->
+<html>
+<head>
+	<title>Local Weather App</title>
+	<meta charset="UTF-8">
+	<script src="../resources/js/jquery-2.1.4.js" type="text/javascript"></script>
+	<link href="../resources/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript">
+		var latitude, longitude, format;
+		var temp, city, country, symbol, weather;
+		var humidity, visibility, windSpeed;
+
+		$(document).ready(function() {
+		  	$("#format").on("click", toggle);
+		  	$(".content").toggle();
+		  	if (navigator.geolocation) {
+		    	navigator.geolocation.getCurrentPosition(function(position) {
+		      		latitude = position.coords.latitude;
+		      		longitude = position.coords.longitude;
+		    	});
+		  	}
+
+		  	update();
+		});
+
+		function update() {
+		  	format = $("#format").text();
+		  	temp = undefined;
+		  	var chkFlag = setInterval(function() {
+		    if (typeof(latitude) === "undefined") {
+		    } else {
+		      	//console.log(latitude, longitude);
+		      	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&appid=09ff3a2a59e575430d8f6f417efadbd0" + "&units=metric", function(json) {
+		        	temp = json.main.temp;
+		        	city = json.name;
+		        	country = json.sys.country;
+		        	symbol = json.weather[0].icon;
+		        	weather = json.weather[0].main;
+		        	humidity = json.main.humidity;
+		        	visibility = json.visibility;
+		        	windSpeed = json.wind.speed;
+		        	console.log(JSON.stringify(json));
+		        	console.log(temp, city, country, symbol, weather, humidity, visibility, windSpeed);
+		      	});
+		      	clearInterval(chkFlag);
+		    }
+		  	}, 1000);
+		  	var setFlag = setInterval(function() {
+		    	if (typeof(temp) === "undefined") {
+		    	} else {
+		    		$("#wait").toggle();
+		      		$("#city").text(city);
+		      		$("#country").text("(" + country + ")");
+		      		temp = parseFloat(temp);
+		      		var dispTemp;
+		      		format === "F" ? dispTemp = (temp * 1.8 + 32) : dispTemp = temp;
+		      		dispTemp = dispTemp.toFixed(2);
+		      		$("#temp").html(dispTemp + "&deg;");
+		      		$("#weather").text(weather);
+		      		var path = "<img src=\"http://openweathermap.org/img/w/" + symbol + ".png\" alt=\"weather-symbol\"/>";
+		      		$("#symbol").html(path);
+		      		$("#lati").text(latitude.toFixed(3));
+		      		$("#longi").text(longitude.toFixed(3));
+		      		$("#humidity").text(humidity + "%");
+		      		$("#visibility").text(visibility);
+		      		$("#windSpeed").text(windSpeed + "m/s");
+		      		$("#format").css("display", "inline");
+		      		$(".content").toggle();
+		      		clearInterval(setFlag);
+		    	}
+		  	}, 1000);
+		}
+
+		function toggle() {
+		  	var cur = $("#format").text();
+		  	cur = cur === "F" ? "C" : "F";
+		  	$("#format").text(cur);
+		  	var dispTemp;
+			cur === "F" ? dispTemp = (temp * 1.8 + 32) : dispTemp = temp;
+			dispTemp = dispTemp.toFixed(2);
+			$("#temp").html(dispTemp + "&deg;");
+		}
+	</script>
+	<style type="text/css">
+		body {
+			background-image: url("http://pcwallart.com/images/light-blue-gradient-wallpaper-3.jpg");
+			background-repeat: no-repeat;
+			color: #39b1c4;
+			font-family: monospace;
+			font-weight: bold;
+		}
+
+		@media (max-width: 800px) {
+			.details {
+				display: none;
+			}
+
+			.mid {
+				margin-top: -5%;
+			}
+
+			.box {
+				width: 50%;
+				height: 50%;
+			}
+
+			.main {
+				font-size: 4vmax;
+			}
+		}
+
+		@media (min-width: 801px) {
+			.details {
+				margin-left: 2%;
+				margin-top: 17%;
+			}
+
+			.box {
+				width: 20%;
+				height: 30%;
+			}
+
+			.main {
+				font-size: 2vmax;
+			}
+		}
+
+		.main {
+			float: left;
+			margin-left: 20%;
+			margin-top: 17%;
+		}
+
+		.details {
+			float: left;
+			font-size: 1.5vmax;
+		}
+
+		#format {
+			display: none;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			font-weight: bold;
+		}
+
+		.main #tempDetail {
+			position: relative;
+		}
+
+		button {
+			border-radius: 50%;
+		}
+
+		#wait {
+			max-width: 650px;
+			margin: 0 auto;
+			font-size: 4vmax;
+			margin-top: 2%;
+			color: #39b1c4;
+		}
+
+		.top {
+			height: 50%;
+		}
+
+		.mid {
+			margin-top: -2%;
+			height: 20%;
+		}
+
+		.bottom {
+			margin-top: 8%;
+			height: 30%;
+		}
+	</style>
+</head>
+<body>
+<div id="wait">
+	Fetching data...
+</div>
+<div class="content">
+	<div class="well main box">
+		<div class="text-center top">
+			City: <span id="city"></span> <span id="country"></span>
+		</div>
+		<div class="text-center mid">
+	    	<span id="symbol"></span>
+	    	<span id="weather"></span>
+	    </div>
+	  	<div id="tempDetail" class="bottom">
+	    	Temp: <span id="temp"></span>
+	    	<button id="format">F</button>
+	  	</div>
+	</div>
+	<div class="well details box">
+		<div id="coords">
+			Latitude: <span id="lati"></span> Longitude: <span id="longi"></span>
+		</div>
+		<div>Humidity: <span id="humidity"></span></div>
+		<div>Visibility: <span id="visibility"></span></div>
+		<div>Wind Speed: <span id="windSpeed"></span></div>
+	</div>
+</div>
+</body>
+</html>

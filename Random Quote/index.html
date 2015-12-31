@@ -1,0 +1,76 @@
+<html>
+<head>
+	<title>Random Quote</title>
+
+	<script src="../resources/js/jquery-2.1.4.js" type="text/javascript"></script>
+	<link href="../resources/bootstrap-3.3.5-dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="../resources/animate.css" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript">
+		var ar = new Array();
+		var len;
+		$(document).ready(function() {
+			ar.push("Nothing is as easy as it looks.");
+			ar.push("Everything takes longer than you think.");
+			ar.push("Anything that can go wrong will go wrong.");
+			ar.push("If there is a possibility of several things going wrong, the one that will cause the most damage will be the one to go wrong.");
+			ar.push("If there is a worse time for something to go wrong, it will happen then.");
+			ar.push("If anything simply cannot go wrong, it will anyway.");
+			ar.push("If you perceive that there are four possible ways in which a procedure can go wrong, and circumvent these, then a fifth way, 		unprepared for, will promptly develop.");
+			ar.push("Left to themselves, things tend to go from bad to worse.");
+			ar.push("If everything seems to be going well, you have obviously overlooked something.");
+			ar.push("Nature always sides with the hidden flaw.");
+			ar.push("It is impossible to make anything foolproof because fools are so ingenious.");
+			ar.push("Whenever you set out to do something, something else must be done first.");
+			ar.push("Every solution breeds new problems.");
+			ar.push("Trust everybody ... then cut the cards.");
+			ar.push("Two wrongs are only the beginning.");
+			ar.push("If at first you don't succeed, destroy all evidence that you tried.");
+			ar.push("To succeed in politics, it is often necessary to rise above your principles.");
+			ar.push("Exceptions prove the rule ... and wreck the budget.");
+			ar.push("Success always occurs in private, and failure in full view.");
+
+			len = ar.length;
+
+			change_quote();
+
+			$("#button").on("click", function() {
+				change_quote();
+			});
+		});
+
+		function change_quote() {
+			var index = Math.floor(Math.random() * len);
+			$("#quote").html(ar[index]);
+		}
+	</script>
+
+	<style type="text/css">
+		.target {
+			background-color: rgba(90, 70, 230, 0.3);
+			margin-top: 10%;
+		}
+
+		body {
+			font-family: monospace;
+		}
+
+		#quote {
+			font-size: 20px;
+		}
+
+		#button {
+			font-size: 20px;
+			margin-bottom: 20px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid well target col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+		<h2 class="text-primary text-center"><b>Random Quotes</b></h2>
+		<button id="button" class="btn btn-primary center-block">Change</button>
+		<div class="well"><div id="quote"></div></div>
+	</div>
+</body>
+</html>

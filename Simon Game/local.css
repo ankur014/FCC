@@ -1,0 +1,79 @@
+
+@media (min-width: 740px) {
+	.box {
+		margin-left: 35%;
+		margin-right: 35%;
+		margin-top: 8%;
+		width: 30%;
+	}
+}
+
+@media (max-width: 739px) {
+	.box {
+		margin-left: 20%;
+		margin-right: 20%;
+		margin-top: 12%;
+		width: 60%;
+	}
+}
+
+@media (max-width: 400px) {
+	.box {
+		margin-left: 10%;
+		margin-right: 10%;
+		margin-top: 22%;
+		width: 80%;
+	}
+}
+
+.controls {
+	font-family: "Slabo 27px";
+	color: black;
+}
+
+.board {
+	margin-top: 5%;
+	border: 10px solid black;
+}
+
+.cell {
+	padding: 15%;
+}
+
+.buttons {
+	float: right;
+}
+
+.alert {
+	margin-top: 2%;
+}
+
+.c1 {
+	background-color: #9F0F17;
+	float: left;
+	width: 50%;
+	border-right: 5px solid black;
+}
+
+.c2 {
+	background-color: #00A74A;
+	border-bottom: 10px solid black;
+	border-left: 5px solid black;
+	border-bottom: 5px solid black;
+}
+
+.c3 {
+	float: left;
+	width: 50%;
+	background-color: #CCA707;
+	border-right: 5px solid black;
+}
+
+.c4 {
+	background-color: #094A8F;
+	border-left: 5px solid black;
+}
+
+.c1:hover, .c2:hover, .c3:hover, .c4:hover {
+	cursor: pointer;
+}

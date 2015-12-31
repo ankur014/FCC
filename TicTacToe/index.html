@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tic-Tac-Toe</title>
+	<link rel="stylesheet" type="text/css" href="../resources/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/jquery-ui-1.11.4.custom/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../resources/animate.css">
+    <script type="text/javascript" src="../resources/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="local.css">
+    <script type="text/javascript" src="local.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="title text-center question animated zoomIn">
+            Choose your symbol :)
+            <div class="ruler"></div>
+            <span class="glyphicon glyphicon-remove cross"></span>
+            <span class="glyphicon glyphicon-unchecked circle"></span>
+        </div>
+        <div class="title text-center">
+            <div class="result animated zoomIn">
+            </div>
+            <div class="furtherPlay animated zoomIn">
+                <div class="ruler"></div>
+                <span class="glyphicon glyphicon-repeat continue"></span>
+                <span class="glyphicon glyphicon-refresh reset"></span>
+            </div>
+        </div>
+        <div class="title gameName text-center animated slideInLeft">
+            Tic-Tac-Toe
+        </div>
+        <div class="well animated slideInRight well board">
+            <div class="row">
+                <div class="col-xs-4 left cell-0">
+                </div>
+                <div class="col-xs-4 left cell-1">
+                </div>
+                <div class="col-xs-4 down cell-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 left cell-3">
+                </div>
+                <div class="col-xs-4 left cell-4">
+                </div>
+                <div class="col-xs-4 down cell-5">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 right cell-6">
+                </div>
+                <div class="col-xs-4 right cell-7">
+                </div>
+                <div class="col-xs-4 cell-8">
+                </div>
+            </div>
+        </div>
+        <div class="scores animated slideInLeft">
+            <span class="userScore text-center"></span>
+            <span class="compScore text-center"></span>
+        </div>
+    </div>
+</body>
+</html>
