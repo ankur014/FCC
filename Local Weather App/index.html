@@ -51,7 +51,7 @@ API: openweathermap.org
 		  	var setFlag = setInterval(function() {
 		    	if (typeof(temp) === "undefined") {
 		    	} else {
-		    		$("#wait").toggle();
+		    		$("#wait").fadeOut(500);
 		      		$("#city").text(city);
 		      		$("#country").text("(" + country + ")");
 		      		temp = parseFloat(temp);
@@ -68,7 +68,7 @@ API: openweathermap.org
 		      		$("#visibility").text(visibility);
 		      		$("#windSpeed").text(windSpeed + "m/s");
 		      		$("#format").css("display", "inline");
-		      		$(".content").toggle();
+		      		$(".content").fadeIn(500);
 		      		clearInterval(setFlag);
 		    	}
 		  	}, 1000);
@@ -86,8 +86,6 @@ API: openweathermap.org
 	</script>
 	<style type="text/css">
 		body {
-			background-image: url("http://pcwallart.com/images/light-blue-gradient-wallpaper-3.jpg");
-			background-repeat: no-repeat;
 			color: #39b1c4;
 			font-family: monospace;
 			font-weight: bold;
@@ -139,6 +137,14 @@ API: openweathermap.org
 			font-size: 1.5vmax;
 		}
 
+		#wait {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
 		#format {
 			display: none;
 			position: absolute;
@@ -155,14 +161,6 @@ API: openweathermap.org
 			border-radius: 50%;
 		}
 
-		#wait {
-			max-width: 650px;
-			margin: 0 auto;
-			font-size: 4vmax;
-			margin-top: 2%;
-			color: #39b1c4;
-		}
-
 		.top {
 			height: 50%;
 		}
@@ -176,11 +174,42 @@ API: openweathermap.org
 			margin-top: 8%;
 			height: 30%;
 		}
+
+		.loading {
+			border: 5px solid #333;
+			margin-left: 30%;
+			margin-right: 30%;
+			width: auto;
+			margin-top: 10%;
+			border-radius: 2px;
+		}
+
+		@keyframes load {
+			0%, 100% {
+				width: 0%;
+			}
+
+			50% {
+				width: 100%;
+			}
+		}
+
+		#tile {
+			height: 30px;
+			background-color: #4285F4;
+			animation-name: load;
+			animation-duration: 10s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-timing-function: ease;
+		}
 	</style>
 </head>
 <body>
 <div id="wait">
-	Fetching data...
+	<div class="loading">
+	    <div id="tile"></div>
+	</div>
 </div>
 <div class="content">
 	<div class="well main box">
