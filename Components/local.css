@@ -1,0 +1,28 @@
+.loading {
+	border: 5px solid #333;
+	margin-left: 30%;
+	margin-right: 30%;
+	width: auto;
+	margin-top: 10%;
+	border-radius: 2px;
+}
+
+@keyframes load {
+	0%, 100% {
+		width: 0%;
+	}
+
+	50% {
+		width: 100%;
+	}
+}
+
+#tile {
+	height: 30px;
+	background-color: #4285F4;
+	animation-name: load;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: ease;
+}
